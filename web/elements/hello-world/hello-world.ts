@@ -3,7 +3,7 @@
 @component("hello-world")
 class HelloWorld extends polymer.Base
 {
-  @property({ type: String, value: 'PolymerTS' })
+  @property({ type: String, value: 'Polymer' })
   target: string;
   
   attached() {

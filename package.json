@@ -1,9 +1,9 @@
 {
-  "name": "PolymerTS-Starter-Kit",
+  "name": "Polymer-Super-Kit",
   "version": "1.0.0",
   "author": "geppy <mail@geppy.me> (http://geppy.me)",
   "description": "Simple production-ready usage of Polymer, TypeScript and more",
-  "homepage": "http://github.com/geppy/PolymerTS-Starter-Kit",
+  "homepage": "https://github.com/geppy/Polymer-Super-Kit",
   "scripts": {
     "test": "mocha -R spec -b --recursive --harmony"
   },
