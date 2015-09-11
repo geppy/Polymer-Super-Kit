@@ -1,0 +1,6 @@
+@import 'theme';
+
+:host {
+  background-color: $primary-background-color;
+  color: $primary-foreground-color;
+}
