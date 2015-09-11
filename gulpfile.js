@@ -26,7 +26,7 @@ var $ = {
   'uglify': require('gulp-uglify'),
   'useref': require('gulp-useref')
 };
-var serve = require('gulp-serve');
+var connect = require('gulp-connect');
 var del = require('del');
 var runSequence = require('run-sequence');
 var polybuild = require('polybuild');
@@ -53,7 +53,7 @@ var AUTOPREFIXER_BROWSERS = [
 
 var styleTask = function (stylesPath, srcs) {
   return gulp.src(srcs.map(function (src) {
-    return path.join('web', stylesPath, src);
+    return path.join('.tmp', stylesPath, src);
   }))
     .pipe($.changed(stylesPath, { extension: '.css' }))
     .pipe($.autoprefixer(AUTOPREFIXER_BROWSERS))
@@ -68,7 +68,8 @@ gulp.task('sass', function () {
     .pipe(sass({
       'includePaths': ['./web/styles/']
     }).on('error', sass.logError))
-    .pipe(gulp.dest('web'));
+    .pipe(gulp.dest('.tmp'))
+    .pipe(connect.reload());
 });
 
 // Compile and Automatically Prefix Stylesheets
@@ -120,12 +121,15 @@ gulp.task('typescript', function () {
     out: 'scripts/output.js'
   }));
 
-  return tsResult.js.pipe(gulp.dest('web'));
+  return tsResult.js.pipe(gulp.dest('.tmp'))
+      .pipe(connect.reload());
 });
 
 // Copy All Files At The Root Level (web)
 gulp.task('copy', function () {
   var web = gulp.src([
+    '.tmp/**/*.js',
+    '.tmp/**/*.css',
     'web/*',
     '!web/test',
     '!web/precache.json'
@@ -224,11 +228,24 @@ gulp.task('precache', function (callback) {
 gulp.task('clean', del.bind(null, ['.tmp', 'www']));
 
 // Watch Files For Changes & Reload
-gulp.task(
-    'serve',
-    ['typescript', 'sass', 'copy', 'styles', 'elements', 'images'],
-    serve('www')
-);
+gulp.task('serve',
+    ['typescript', 'sass'],
+    function () {
+  connect.server({
+    root: ['.tmp/', 'web'],
+    port: 8000,
+    livereload: true
+  });
+  
+  gulp.watch([
+    'web/elements/**/*.ts',
+    'web/scripts/**/*.ts'
+  ], ['typescript']);
+  gulp.watch([
+    'web/elements/**/*.scss',
+    'web/styles/**/*.scss'
+  ], ['sass']);
+});
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
