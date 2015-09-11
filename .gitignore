@@ -97,3 +97,21 @@ Thumbs.db
 # Cache files, and generated .js/.js.map files.
 ################################################
 .tscache/
+
+################################################
+# Private Keys
+#
+# Used for authenticating.
+################################################
+dist.crx
+dist.pem
+
+
+################################################
+# Dart- and pub-generated
+#
+# Cache files, lock files and installed packages.
+################################################
+pubspec.lock
+.packages
+/.pub/
