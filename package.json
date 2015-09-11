@@ -4,6 +4,14 @@
   "author": "geppy <mail@geppy.me> (http://geppy.me)",
   "description": "Simple production-ready usage of Polymer, TypeScript and more",
   "homepage": "https://github.com/geppy/Polymer-Super-Kit",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:geppy/Polymer-Super-Kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geppy/Polymer-Super-Kit/issues",
+    "email": "hello@geppy.me"
+  },
   "scripts": {
     "test": "mocha -R spec -b --recursive --harmony"
   },
