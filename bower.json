@@ -1,0 +1,21 @@
+{
+  "name": "PolymerTS-Starter-Kit",
+  "version": "1.0.0",
+  "authors": [
+    "geppy <mail@geppy.me>"
+  ],
+  "homepage": "http://github.com/geppy/PolymerTS-Starter-Kit/",
+  "dependencies": {
+    "iron-elements": "PolymerElements/iron-elements#^1.0.0",
+    "js-config": "~1.0.3",
+    "neon-elements": "PolymerElements/neon-elements#^1.0.0",
+    "page": "visionmedia/page.js#~1.6.3",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.1",
+    "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
+    "polymer": "Polymer/polymer#^1.1.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "*",
+    "test-fixture": "PolymerElements/test-fixture#^1.0.0"
+  }
+}
