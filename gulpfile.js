@@ -118,7 +118,7 @@ gulp.task('typescript', function () {
     experimentalDecorators: true,
     inlineSourceMap: true,
     inlineSources: true,
-    out: 'scripts/output.js'
+    out: 'output.js'
   }));
 
   return tsResult.js.pipe(gulp.dest('.tmp'))
